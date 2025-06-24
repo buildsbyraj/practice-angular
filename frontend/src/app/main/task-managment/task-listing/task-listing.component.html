@@ -1,0 +1,45 @@
+<p>task-listing works!</p>
+
+<div>
+    <button type="button" (click)="addTask()">Add Task</button>
+</div>
+
+<div>
+    <input placeholder='Enter the name'  [(ngModel)]="searchText" />
+    <button (click)="searchFunction()">Search</button>
+</div>
+
+<form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
+
+    <input type="text" placeholder="Enter The name" formControlName="name">
+    <input type="text" placeholder="Enter The Task Status" formControlName="status">
+    <input type="text" placeholder="Enter The Taks Prority" formControlName="priority">
+
+    <button type="submit">Apply Filter</button>
+    <button type="button" (click)="clearFilter()">Clear Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th (click)="sortData('name')">Name</th>
+            <th (click)="sortData('status.name')">Task Status</th>
+            <th (click)="sortData('priority.name')">Task Prority</th>
+            <th >Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of taskList; let i =index"> 
+            <td>{{(currentPage - 1) * pageSize + i + 1  }}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.status?.name}}</td> 
+            <td>{{data.priority?.name}}</td>
+            <td><button type="button" (click)="updateTask(data)">Update</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<button type="button" (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+<span>page {{currentPage}} of {{totalPage}}</span>
+<button type="button" (click)="nextPage()" [disabled]="currentPage === totalPage">Next</button>

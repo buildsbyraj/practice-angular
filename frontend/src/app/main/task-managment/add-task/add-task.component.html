@@ -1,0 +1,26 @@
+<form [formGroup]="taskForm" (ngSubmit)="taskApi()">
+
+    <div>
+        <span>Name</span>
+        <input placeholder="Enter The Task Name" formControlName="name" />
+    </div>
+
+    <div>
+        <span>Task Status</span>
+        <select formControlName="task_status_id">
+            <option *ngFor="let data of statusData" [value]="data.id">{{data.name}}</option>
+        </select>
+
+    </div>
+
+    <div>
+        <span>Task Priority</span>
+        <select formControlName="task_priority_id">
+            
+            <option *ngFor="let data of priorityData" [value]="data.id">{{data.name}}</option>
+            
+        </select>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>

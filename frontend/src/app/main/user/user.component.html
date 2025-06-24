@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <tr>
+            <th>Index</th>
+            <th>User</th>
+            <th>Email</th>
+            <th>Number</th>
+            <th>Skills</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userData; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{user?.user}}</td>
+            <td>{{user?.email}}</td>
+            <td>{{user?.number}}</td>
+            <td>{{user?.skill}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button type="button" (click)="task()">Task</button>
