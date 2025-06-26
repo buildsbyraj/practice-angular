@@ -6,7 +6,7 @@ export const AppDataSource = new DataSource({
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "devtrivedi@37",
+    password: "123456",
     database: "database",
     // entities: [__dirname + "/**/*.entities{.ts,.js}"],
     entities: [usersEntity],
